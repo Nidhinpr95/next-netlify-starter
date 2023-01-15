@@ -2,17 +2,18 @@ importScripts('https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/7.18.0/firebase-messaging.js');
 // Your web app's Firebase configuration
     var firebaseConfig = {
-  apiKey: "AIzaSyDOCAbC123dEf456GhI789jKl01-MnO",
-  authDomain: "myapp-project-123.firebaseapp.com",
-  databaseURL: "https://myapp-project-123.firebaseio.com",
-  projectId: "myapp-project-123",
-  storageBucket: "myapp-project-123.appspot.com",
-  messagingSenderId: "65211879809",
-  appId: "1:65211879909:web:3ae38ef1cdcb2e01fe5f0c",
+  apiKey: "AIzaSyB32Ss2JsvE6aFhvT1Mu9Raacq0PkKS4LQ",
+  authDomain: "esc-test-project.firebaseapp.com",
+  databaseURL: "https://esc-test-project.firebaseio.com",
+  projectId: "esc-test-project",
+  storageBucket: "esc-test-project.appspot.com",
+  messagingSenderId: "610172757990",
+  appId: "1:610172757990:web:75157e4531de2df3985827",
+  measurementId: "G-SNWGNE3DQ5"
 };
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
-messaging.usePublicVapidKey(ABp.........BS5A);
+messaging.usePublicVapidKey(BOIeXfD6zR-oHVpbXab_oedXMfkvjbf0ukBYgA3rXjygO4ZGWAMbl9s5Q_MEvhg9toxkAf4TTKrp-VbIwQI7e6c);
 messaging.onBackgroundMessage(function(payload) {
 const notificationTitle = payload.data.title;
 const notificationOptions = {
