@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 <script type="module">
-	  function getStartToken(){
+function getStartToken(){
 messaging.getToken().then((currentToken) => {
 if (currentToken) {
 sendTokenToServer(currentToken);
@@ -31,11 +31,12 @@ if (permission === 'granted') {
 console.log("have Permission");
 //calls method again and to sent token to server
 getStartToken();
- }
- else{console.log("Permission Denied");}
+}
+else{console.log("Permission Denied");}
 .catch(function(err){
 console.log(err);
 })
+}
 }
 function sendTokenToServer(token){ 
 if (!isTokensendTokenToServer()) {
