@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 <script type="module">
-	  unction getStartToken(){
+	  function getStartToken(){
 messaging.getToken().then((currentToken) => {
 if (currentToken) {
 sendTokenToServer(currentToken);
