@@ -1,0 +1,118 @@
+<HTML>
+
+<HEAD>
+
+<TITLE>Your Title Here</TITLE>
+
+<script type="module">
+  unction getStartToken(){
+messaging.getToken().then((currentToken) => {
+if (currentToken) {
+sendTokenToServer(currentToken);
+} 
+else {
+// Show permission request.
+RequestPermission();
+setTokenSentToServer(false);
+}
+}).catch((err) => {
+setTokenSentToServer(false);
+});
+}
+function RequestPermission(){
+messaging.requestPermission()
+.then(function(permission){
+if (permission === 'granted') {
+console.log("have Permission");
+//calls method again and to sent token to server
+getStartToken();
+ }
+ else{console.log("Permission Denied");}
+.catch(function(err){
+console.log(err);
+})
+}
+function sendTokenToServer(token){ 
+if (!isTokensendTokenToServer()) {
+$.ajax({
+url: URL,
+type: 'POST',
+data: {
+//whatever you wanna send
+push_token:token,
+},
+success: function (response) {
+setTokenSentToServer(true);
+},
+error: function (err) {
+setTokenSentToServer(false);
+},
+});
+}}
+function isTokensendTokenToServer() {
+return window.localStorage.getItem('sendTokenToServer') === '1';
+}
+function setTokenSentToServer(sent) {
+window.localStorage.setItem('sendTokenToServer', sent ? '1' : '0');
+}
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyB32Ss2JsvE6aFhvT1Mu9Raacq0PkKS4LQ",
+    authDomain: "esc-test-project.firebaseapp.com",
+    databaseURL: "https://esc-test-project.firebaseio.com",
+    projectId: "esc-test-project",
+    storageBucket: "esc-test-project.appspot.com",
+    messagingSenderId: "610172757990",
+    appId: "1:610172757990:web:75157e4531de2df3985827",
+    measurementId: "G-SNWGNE3DQ5"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  //const analytics = getAnalytics(app);
+  
+     getStartToken();
+	//This code recieve message from server /your app and print message to console if same tab is opened as of project in browser 
+	messaging.onMessage(function(payload){
+	console.log("on Message",payload);
+});
+</script>
+
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<CENTER><IMG SRC="clouds.jpg" ALIGN="BOTTOM"> </CENTER>
+
+<HR>
+
+<a href="http://somegreatsite.com">Link Name</a>
+
+is a link to another nifty site
+
+<H1>This is a Header</H1>
+
+<H2>This is a Medium Header</H2>
+
+Send me mail at <a href="mailto:support@yourcompany.com">
+
+support@yourcompany.com</a>.
+
+<P> This is a new paragraph!
+
+<P> <B>This is a new paragraph!</B>
+
+<BR> <B><I>This is a new sentence without a paragraph break, in bold italics.</I></B>
+
+<HR>
+
+</BODY>
+
+</HTML>
